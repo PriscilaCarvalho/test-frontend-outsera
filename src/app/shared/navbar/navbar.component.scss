@@ -1,0 +1,22 @@
+.navbar {
+  width: 100%;
+  background-color: #000000; 
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-logo img {
+  height: 50px; 
+}
+
+.navbar-translate {
+  margin-left: auto;
+}

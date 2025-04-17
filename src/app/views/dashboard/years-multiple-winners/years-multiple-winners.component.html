@@ -1,0 +1,21 @@
+<p-panel [header]="'LIST_YEARS_WITH_MULTIPLE_WINNERS' | translate">
+  <p-table [value]="(yearsData$ | async) ?? []" showGridlines [loading]="loading">
+    <ng-template pTemplate="loading">
+      <div class="p-grid p-justify-center p-align-center">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'TABLE_YEAR' | translate }}</th>
+        <th>{{ 'TABLE_WIN_COUNT' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-year>
+      <tr>
+        <td>{{ year.year }}</td>
+        <td>{{ year.winnerCount }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

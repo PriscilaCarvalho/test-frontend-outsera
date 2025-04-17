@@ -1,0 +1,48 @@
+<p-panel [header]="'MOVIE_WINNERS_HEADER' | translate" styleClass="mt-3">
+  <div class="grid flex-wrap">
+    <div class="col-12 md:col-10">
+      <input
+        id="yearInput"
+        type="number"
+        pInputText
+        [(ngModel)]="selectedYear"
+        [placeholder]="'SEARCH_BY_YEAR' | translate"
+        class="w-full"
+      />
+    </div>
+    <div class="col-12 md:col-2">
+      <button
+        pButton
+        type="button"
+        (click)="searchWinners()"
+        class="max-h-full"
+      >
+        <i class="pi pi-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <p-table [value]="(winners$ | async) ?? []" showGridlines [loading]="loading">
+    <ng-template pTemplate="loading">
+      <div class="p-d-flex p-jc-center p-ai-center py-4">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'TABLE_HEADER_ID' | translate }}</th>
+        <th>{{ 'TABLE_HEADER_YEAR' | translate }}</th>
+        <th>{{ 'TABLE_HEADER_TITLE' | translate }}</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-movie>
+      <tr *ngIf="selectedYear">
+        <td>{{ movie.id }}</td>
+        <td>{{ movie.year }}</td>
+        <td>{{ movie.title }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

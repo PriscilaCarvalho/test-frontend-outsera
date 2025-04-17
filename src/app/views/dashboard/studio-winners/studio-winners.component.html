@@ -1,0 +1,21 @@
+<p-panel [header]="'TOP_STUDIOS_WINNERS' | translate">
+  <p-table [value]="(studiosData$ | async) ?? []" showGridlines [loading]="loading">
+    <ng-template pTemplate="loading">
+      <div class="p-grid p-justify-center p-align-center">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'STUDIO_NAME' | translate }}</th>
+        <th>{{ 'WIN_COUNT' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-studio>
+      <tr>
+        <td>{{ studio.name }}</td>
+        <td>{{ studio.winCount }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

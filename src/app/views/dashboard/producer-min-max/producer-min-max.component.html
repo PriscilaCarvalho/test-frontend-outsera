@@ -1,0 +1,53 @@
+<h2>{{ 'PRODUCERS_TITLE' | translate }}</h2>
+
+<p-panel [header]="'MAXIMUM' | translate">
+  <p-table [value]="(maxProducerData$ | async) ?? []" [loading]="loading">
+    <ng-template pTemplate="loading">
+      <div class="p-grid p-justify-center p-align-center">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'TABLE_PRODUCER' | translate }}</th>
+        <th>{{ 'TABLE_INTERVAL' | translate }}</th>
+        <th>{{ 'TABLE_PREVIOUS_YEAR' | translate }}</th>
+        <th>{{ 'TABLE_FOLLOWING_YEAR' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prod>
+      <tr>
+        <td>{{ prod.producer }}</td>
+        <td>{{ prod.interval }}</td>
+        <td>{{ prod.previousWin }}</td>
+        <td>{{ prod.followingWin }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>
+
+<p-panel [header]="'MINIMUM' | translate" styleClass="mt-3">
+  <p-table [value]="(minProducerData$ | async) ?? []" showGridlines [loading]="loading">
+    <ng-template pTemplate="loading">
+      <div class="p-grid p-justify-center p-align-center">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>{{ 'TABLE_PRODUCER' | translate }}</th>
+        <th>{{ 'TABLE_INTERVAL' | translate }}</th>
+        <th>{{ 'TABLE_PREVIOUS_YEAR' | translate }}</th>
+        <th>{{ 'TABLE_FOLLOWING_YEAR' | translate }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prod>
+      <tr>
+        <td>{{ prod.producer }}</td>
+        <td>{{ prod.interval }}</td>
+        <td>{{ prod.previousWin }}</td>
+        <td>{{ prod.followingWin }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-panel>

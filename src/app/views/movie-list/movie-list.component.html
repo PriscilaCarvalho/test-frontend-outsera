@@ -1,0 +1,75 @@
+<h2 class="text-50">{{ 'LIST' | translate }}</h2>
+
+<p-table [value]="(movies$ | async) ?? []" showGridlines [rows]="rows" [loading]="loading">
+  <ng-template pTemplate="loading">
+    <div class="p-grid p-justify-center p-align-center">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  </ng-template>
+
+  <ng-template #header>
+    <tr>
+      <th>{{ "TABLE_ID" | translate }}</th>
+      <th class="flex flex-column">
+        <div class="flex align-items-center justify-content-center mb-1">
+          {{ "TABLE_YEAR" | translate }}
+        </div>
+        <div class="flex align-items-center justify-content-center">
+          <input
+            type="text"
+            pInputText
+            [ngModel]="filterModel.year"
+            (ngModelChange)="filter('year', $event)"
+            class="p-inputtext w-full"
+            [placeholder]="'INPUT_FILTER_BY_YEAR' | translate"
+          />
+        </div>
+      </th>
+      <th>{{ "TABLE_TITLE" | translate }}</th>
+      <th class="flex flex-column">
+        <div class="flex align-items-center justify-content-center mb-1">
+          {{ "TABLE_WINNER" | translate }}
+        </div>
+        <div class="flex align-items-center justify-content-center">
+          <p-select
+            id="filterWinner"
+            [options]="winnerOptions"
+            [(ngModel)]="filterModel.winner"
+            (ngModelChange)="filter('winner', $event)"
+            placeholder="{{ 'DROPDOWN_PLACEHOLDER_WINNER' | translate }}"
+            class="w-full"
+          >
+            <ng-template pTemplate="item" let-option>
+              {{ option.label | translate }}
+            </ng-template>
+            <ng-template pTemplate="selectedItem" let-option>
+              {{ option.label | translate }}
+            </ng-template>
+          </p-select>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-movie>
+    <tr>
+      <td>{{ movie.id }}</td>
+      <td>{{ movie.year }}</td>
+      <td>{{ movie.title }}</td>
+      <td>
+        {{
+          movie.winner
+            ? ("DROPDOWN_OPTION_YES" | translate)
+            : ("DROPDOWN_OPTION_NO" | translate)
+        }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-paginator
+  (onPageChange)="onPageChange($event)"
+  [first]="first"
+  [rows]="rows"  
+  [totalRecords]="totalRecords"
+>
+</p-paginator>

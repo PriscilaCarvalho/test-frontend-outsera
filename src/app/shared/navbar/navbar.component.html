@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <img src="assets/logo.png" alt="Logo Golden Raspberry Awards" />
+    </div>
+    <div class="navbar-translate">
+      <p-select
+        [options]="languages"
+        [(ngModel)]="selectedLanguage"        
+        (onChange)="onLanguageChange($event)"
+        placeholder="{{ 'LANGUAGE_SELECTOR' | translate }}"
+      >
+      </p-select>
+    </div>
+  </div>
+</nav>

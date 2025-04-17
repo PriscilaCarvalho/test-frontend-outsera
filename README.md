@@ -1,5 +1,5 @@
 
-# 🎬 Test Frontend Outsera
+# 🎬 Golden Raspberry Awards
 
 Aplicação Angular para listagem e análise de filmes vencedores de prêmios.
 
